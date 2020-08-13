@@ -2,11 +2,23 @@ import {
   Context, Delete, Get, HttpResponseCreated, HttpResponseNoContent,
   HttpResponseNotFound, HttpResponseOK, Post, ValidateBody, ValidatePathParam
 } from '@foal/core';
+import { ValidateMultipartFormDataBody } from '@foal/storage';
 import { getRepository } from 'typeorm';
 
 import { Todo } from '../entities';
 
 export class ApiController {
+
+  @Post('/upload')
+  @ValidateMultipartFormDataBody({
+    files: {
+      file: { required: true, saveTo: '/files' }
+    }
+  })
+  async upload(ctx: Context) {
+    console.log('File upload processed')
+    return new HttpResponseOK()
+  }
 
   @Get('/todos')
   async getTodos() {
@@ -25,7 +37,7 @@ export class ApiController {
       text: { type: 'string' }
     },
     // The property "text" is required.
-    required: [ 'text' ],
+    required: ['text'],
     type: 'object',
   })
   async postTodo(ctx: Context) {

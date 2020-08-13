@@ -10,18 +10,14 @@
 </head>
 
 <body>
+
   <div id="app">
+
     <div class="box">
-      <h1>To-Do List</h1>
-      <div class="row" v-for="todo in todos" :key="todo.id">
-        <div class="text">{{ todo.text }}</div>
-        <div class="checkbox-wrapper">
-          <input type="checkbox" v-on:click="deleteTodo(todo, $event)">
-        </div>
-      </div>
-      <div class="row">
-        <input type="text" class="text-input" v-on:keyup.enter="addNewTodo" v-model="newTodoText" placeholder="Type a new to-do and press Enter">
-      </div>
+      <h1>File Upload</h1>
+      <div id="dropzone" class="dropzone" v-on:drop="upload($event)" v-on:dragover.stop.prevent="dragover">Drag and drop
+        your files
+        here...</div>
     </div>
 
     <div class="box error-box" v-if="error">

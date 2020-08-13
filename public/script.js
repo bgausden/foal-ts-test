@@ -1,10 +1,8 @@
-function request(url, method, body) {
+function request(url, method, body, headers) {
   return fetch(url, {
-    method,
-    body: JSON.stringify(body),
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    method: method,
+    body: body,
+    headers: headers
   }).then(response => {
     if (!response.ok) {
       return Promise.reject({
@@ -14,8 +12,8 @@ function request(url, method, body) {
         url: response.url
       });
     }
-    
-    return response.json().catch(() => {});
+
+    return response.json().catch(() => { });
   });
 }
 
@@ -36,10 +34,10 @@ const app = new Vue({
       if (!this.newTodoText) { return; }
 
       this.error = null;
-      request('/api/todos', 'POST', { text: this.newTodoText })
+      request('/api/todos', 'POST', JSON.stringify({ text: this.newTodoText }))
         .then(todo => this.todos.push(todo))
         .catch(error => this.error = error);
-      
+
       this.newTodoText = '';
     },
     deleteTodo: function (todo, event) {
@@ -54,6 +52,26 @@ const app = new Vue({
         .catch(error => {
           this.error = error;
         });
+    },
+    dragover: function () {
+      this.error = "Dragover!"
+    },
+    upload: function (event) {
+      if (event) event.preventDefault()
+      this.error = event.dataTransfer.files[0]
+      this.error = null
+      let formData = new FormData()
+      formData.append('file', event.dataTransfer.files[0])
+      let headers = new Headers()
+      // headers.append('Content-Type', 'multipart/form-data')
+      // headers.append('Content-Disposition', 'form-data; "name=file"; filename="myfile.txt"')
+      request('/api/upload', 'POST', formData, headers)
+        .then(() => {
+          console.log("File uploaded")
+        })
+        .catch(error => {
+          this.error = error
+        })
     }
   }
 });
