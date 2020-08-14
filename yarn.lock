@@ -23,7 +23,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@foal/core@^1.0.0", "@foal/core@^1.11.0":
+"@foal/core@^1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@foal/core/-/core-1.11.0.tgz#17566bec2617405202814b867e5f7b097308badd"
   integrity sha512-mnhF7jaVRQFZFkP1FCcvTw3hW5fXtgBiog79VzDnfyDnmsRMtjxIOoIfBt+BPiJ+BWpxjxUECXQuI87NNswDtw==
@@ -36,12 +36,30 @@
     pump "~3.0.0"
     reflect-metadata "~0.1.13"
 
+"@foal/storage@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@foal/storage/-/storage-1.11.0.tgz#af1df46788b075459a1b18892b19c06d83bc2cb1"
+  integrity sha512-mmVk8Kw1k9E/jQyaZ187io7KWmzPqPHI2jxULVkDdbRp1k496aZ5lvvJVEzrb2YP9yL6PPaX/mOPsKoWMrYnVg==
+  dependencies:
+    "@foal/core" "^1.11.0"
+    "@types/busboy" "~0.2.3"
+    busboy "~0.3.1"
+    mime "~2.4.4"
+    pump "~3.0.0"
+
 "@foal/typeorm@^1.0.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@foal/typeorm/-/typeorm-1.11.0.tgz#2af22cf08a27dde6c431f0288a42926a89225466"
   integrity sha512-/hbREpTNkiHgwSh4wxmrfByy8Stb5LqUp3C63e0Aq4QkBP3xF2l8tmFPMQMs2AcTCDen34+NcWAcotPGA4TOlw==
   dependencies:
     "@foal/core" "^1.11.0"
+
+"@types/busboy@~0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@types/busboy/-/busboy-0.2.3.tgz#6697ad29873246c530f09a3ff5a40861824230d5"
+  integrity sha1-ZpetKYcyRsUw8Jo/9aQIYYJCMNU=
+  dependencies:
+    "@types/node" "*"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -62,6 +80,11 @@
   version "5.2.7"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
+
+"@types/node@*":
+  version "14.0.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.27.tgz#a151873af5a5e851b51b3b065c9e63390a9e0eb1"
+  integrity sha512-kVrqXhbclHNHGu9ztnAwSncIgJv/FaxmzXJvGXNdcCpV1b8u1/Mi6z6m0vwy0LzKeXFTPLH0NzwmoJ3fNCIq0g==
 
 "@types/node@^8.0.47":
   version "8.10.62"
@@ -325,6 +348,13 @@ buffer@^5.1.0:
   dependencies:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
+
+busboy@~0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/busboy/-/busboy-0.3.1.tgz#170899274c5bf38aae27d5c62b71268cd585fd1b"
+  integrity sha512-y7tTxhGKXcyBxRKAni+awqx8uqaJKrSFSNFSeRG5CsWNdmy2BIK+6VGWEW7TZnIO/533mtMEA4rOevQV815YJw==
+  dependencies:
+    dicer "0.3.0"
 
 bytes@3.1.0:
   version "3.1.0"
@@ -670,6 +700,13 @@ detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
+
+dicer@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/dicer/-/dicer-0.3.0.tgz#eacd98b3bfbf92e8ab5c2fdb71aaac44bb06b872"
+  integrity sha512-MdceRRWqltEG2dZqO769g27N/3PXfcKl04VhYnBlo2YhH7zPi88VebsjTKclaOyiuMaGU72hTfw3VkUitGcVCA==
+  dependencies:
+    streamsearch "0.1.2"
 
 diff@3.5.0:
   version "3.5.0"
@@ -2352,6 +2389,11 @@ sqlite3@^4.0.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+
+streamsearch@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-0.1.2.tgz#808b9d0e56fc273d809ba57338e929919a1a9f1a"
+  integrity sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo=
 
 string-width@^1.0.1:
   version "1.0.2"

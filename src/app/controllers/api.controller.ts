@@ -6,17 +6,29 @@ import { ValidateMultipartFormDataBody } from '@foal/storage';
 import { getRepository } from 'typeorm';
 
 import { Todo } from '../entities';
+import { createWriteStream } from 'fs';
 
 export class ApiController {
 
   @Post('/upload')
   @ValidateMultipartFormDataBody({
     files: {
-      file: { required: true, saveTo: '/files' }
+      // file: { required: true, saveTo: '/files' },
+      file: { required: true },
+    },
+    fields: {
+      fileName: { type: 'string' }
     }
   })
   async upload(ctx: Context) {
-    console.log('File upload processed')
+    const buffer: Buffer = ctx.request.body.files.file
+    const fileName = ctx.request.body.fields.fileName
+    const writeStream = createWriteStream(`./uploaded/files/${fileName}`)
+    writeStream.on('finish', () => {
+      console.log('File upload processed')
+    })
+    writeStream.write(buffer)
+    writeStream.end()
     return new HttpResponseOK()
   }
 

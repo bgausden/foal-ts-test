@@ -60,8 +60,10 @@ const app = new Vue({
       if (event) event.preventDefault()
       this.error = event.dataTransfer.files[0]
       this.error = null
+      const file = event.dataTransfer.files[0]
       let formData = new FormData()
-      formData.append('file', event.dataTransfer.files[0])
+      formData.append('file', file)
+      formData.append('fileName', file.name)
       let headers = new Headers()
       // headers.append('Content-Type', 'multipart/form-data')
       // headers.append('Content-Disposition', 'form-data; "name=file"; filename="myfile.txt"')
